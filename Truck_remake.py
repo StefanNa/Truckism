@@ -79,7 +79,7 @@ while not full :
                     print("UPX",UpX)
             else :
                 # if we can , increment the height
-                UpY += box [2]
+                UpY += 3
                 print("UPY",UpY)
                 print("UPX",UpX)
 
