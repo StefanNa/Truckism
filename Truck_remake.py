@@ -15,6 +15,7 @@ current_column = 0 # current column to place in
 
 TruckX=50
 TruckY=40
+ts.set_truck_size(TruckX, TruckY)
 
 UpX=0
 SideX=2
@@ -32,22 +33,27 @@ while not full :
     if box[1] is 1 and flag1 is 0 :
         box1=box
         flag1=1
+        print("BOX size",box[1],box[2],"stored on 1")
         box = ts. get_next_box () # box = (ID , width , height )
     if box[1] is 1 and flag2 is 0 :
         box2=box
         flag2=1
+        print("BOX size",box[1],box[2],"stored on 2")
         box = ts. get_next_box () # box = (ID , width , height )
     if box[1] is 1 and flag3 is 0 :
         box3=box
         flag3=1
+        print("BOX size",box[1],box[2],"stored on 3")
         box = ts. get_next_box () # box = (ID , width , height )
     if box[1] is 3 and flag4 is 0 :
         box4=box
         flag4=1
+        print("BOX size",box[1],box[2],"stored on 4")
         box = ts. get_next_box () # box = (ID , width , height )
     if box[1] is 2 and flag5 is 0 :
         box5=box
         flag5=1
+        print("BOX size",box[1],box[2],"stored on 5")
         box = ts. get_next_box () # box = (ID , width , height )
     print("BOX",box[0],box[1],box[2])
     # if box is taller than it is wide , lay it flat
@@ -57,25 +63,46 @@ while not full :
 
     if box[1] is 2:
     # if we cant place the box at current height , assume we have reached the top
-        if not ts. add_box (box , UpX , UpY , rotated ):
-            UpX += 2 # increment the column
+        if UpY%2 is not 0 and flag4 is 1:
+            if not ts. add_box (box4 , UpX , UpY , True ):
+                UpX += 2 # increment the column
 
-            UpY = SideY+3 # reset the height
-            # if we cant place the box in the next column , assume we filled the truck
+                UpY = SideY+3 # reset the height
+                # if we cant place the box in the next column , assume we filled the truck
+                if not ts. add_box (box , UpX , UpY , rotated ):
+                    full = True
+                else :
+                    # if we can , increment the height
+                    if rotated : UpY += box [1]
+                    else : UpY += box [2]
+                    print("UPY",UpY)
+                    print("UPX",UpX)
+            else :
+                # if we can , increment the height
+                UpY += box [2]
+                print("UPY",UpY)
+                print("UPX",UpX)
+
+        else:
             if not ts. add_box (box , UpX , UpY , rotated ):
-                full = True
+                UpX += 2 # increment the column
+
+                UpY = SideY+3 # reset the height
+                # if we cant place the box in the next column , assume we filled the truck
+                if not ts. add_box (box , UpX , UpY , rotated ):
+                    full = True
+                else :
+                    # if we can , increment the height
+                    if rotated : UpY += box [1]
+                    else : UpY += box [2]
+                    print("UPY",UpY)
+                    print("UPX",UpX)
             else :
                 # if we can , increment the height
                 if rotated : UpY += box [1]
                 else : UpY += box [2]
                 print("UPY",UpY)
                 print("UPX",UpX)
-        else :
-            # if we can , increment the height
-            if rotated : UpY += box [1]
-            else : UpY += box [2]
-            print("UPY",UpY)
-            print("UPX",UpX)
 
     else:
         if not ts. add_box (box , SideX , SideY , rotated ):
