@@ -13,13 +13,42 @@ prev_height = 0 # layer where the last box was placed
 full = False # is the truck full yet?
 current_column = 0 # current column to place in
 
+TruckX=50
+TruckY=40
+
 UpX=0
 SideX=2
 UpY=0
 SideY=0
 
+flag1=0
+flag2=0
+flag3=0
+flag4=0
+flag5=0
+
 while not full :
     box = ts. get_next_box () # box = (ID , width , height )
+    if box[1] is 1 and flag1 is 0 :
+        box1=box
+        flag1=1
+        box = ts. get_next_box () # box = (ID , width , height )
+    if box[1] is 1 and flag2 is 0 :
+        box2=box
+        flag2=1
+        box = ts. get_next_box () # box = (ID , width , height )
+    if box[1] is 1 and flag3 is 0 :
+        box3=box
+        flag3=1
+        box = ts. get_next_box () # box = (ID , width , height )
+    if box[1] is 3 and flag4 is 0 :
+        box4=box
+        flag4=1
+        box = ts. get_next_box () # box = (ID , width , height )
+    if box[1] is 2 and flag5 is 0 :
+        box5=box
+        flag5=1
+        box = ts. get_next_box () # box = (ID , width , height )
     print("BOX",box[0],box[1],box[2])
     # if box is taller than it is wide , lay it flat
     if box [2] is not 3: rotated = True
