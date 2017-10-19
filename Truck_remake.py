@@ -2,7 +2,7 @@ import trucksim as ts
 import numpy as np
 from sys import exit
 
-#ts.set_truck_size(1000,1000)
+#ts.set_truck_size(100,100)
 
 # Since we know the dimensions of the boxes , this code simply takes
 # the maximum width of any box , and increments the column number every time .
