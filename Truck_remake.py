@@ -131,7 +131,35 @@ while not full :
         if SideX >= TruckX-3 and SideX is not TruckX and flag1 is 1:
             #filling continues until we reach the edge or are out of blocks (unlikely but possible)
             while SideX is not TruckX:
-                #if stock 1 is available use it
+#                #if we are more than 2 away from wall se 3x2 block
+            #THIS CAN BE UTILISED IF WANTED,BUT PRODUCES BIG EMPTY SQUARE TOP RIGHT
+            #JUST CHANGE NEXT if TO elif and uncomment
+
+#                if flag4 is 1 and SideX <= TruckX-2:
+#                    if not ts. add_box (box4 , SideX , SideY , True ):
+#                        SideY += 3 # increment the column
+#                        SideX = UpX+2 # reset the height
+#                        # if we cant place the box in the next column , assume we filled the truck
+#                        if not ts. add_box (box , SideX , SideY , rotated ):
+#                            full = True
+#                        else :
+#                            # DOESNT REALLY MATTER
+#                            if rotated : SideX += box [2]
+#                            else : SideX += box [1]
+#                            print("SideY",SideY)
+#                            print("SideX",SideX)
+#                            break
+#                    else :
+#                        # if we can , increment the height
+#                        SideX += 2
+#                        print("ROW Insertation0 triggered:")
+#                        print("SideY",SideY)
+#                        print("SideX",SideX)
+#                        flag4=0
+#                        box5=box
+#                        flag0=1
+
+                #if stock 1 is available use it (1x3)
                 if flag1 is 1:
                     if not ts. add_box (box1 , SideX , SideY , False ):
                         SideY += 3 # increment the column
@@ -145,18 +173,21 @@ while not full :
                             else : SideX += box [1]
                             print("SideY",SideY)
                             print("SideX",SideX)
-                            break
+                            break #just for safety but wont ever be reached
                     else :
                         # if we can , increment the height
                         SideX += 1
                         print("ROW Insertation1 triggered:")
                         print("SideY",SideY)
                         print("SideX",SideX)
+                        #flag states that block is used and stock is empty
                         flag1=0
+                        #operation and flag state that the block that was supposed to be used..
+                        # will be used in the next step and is now stored on stock 5
                         box5=box
                         flag0=1
 
-                #if stock 2 is available use it
+                #if stock 2 is available use it (1x3)
                 elif flag2 is 1:
                     if not ts. add_box (box2 , SideX , SideY , False ):
                         SideY += 3 # increment the column
@@ -170,18 +201,21 @@ while not full :
                             else : SideX += box [1]
                             print("SideY",SideY)
                             print("SideX",SideX)
-                            break
+                            break #just for safety but wont ever be reached
                     else :
                         # if we can , increment the height
                         SideX += 1
                         print("ROW Insertation2 triggered:")
                         print("SideY",SideY)
                         print("SideX",SideX)
+                        #flag states that block is used and stock is empty
                         flag2=0
+                        #operation and flag state that the block that was supposed to be used..
+                        # will be used in the next step and is now stored on stock 5
                         box5=box
                         flag0=1
 
-                #if stock 3 is available use it
+                #if stock 3 is available use it (1x3)
                 elif flag3 is 1:
                     if not ts. add_box (box3 , SideX , SideY , False ):
                         SideY += 3 # increment the column
@@ -195,16 +229,20 @@ while not full :
                             else : SideX += box [1]
                             print("SideY",SideY)
                             print("SideX",SideX)
-                            break
+                            break #just for safety but wont ever be reached
                     else :
                         # if we can , increment the height
                         SideX += 1
                         print("ROW Insertation3 triggered:")
                         print("SideY",SideY)
                         print("SideX",SideX)
+                        #flag states that block is used and stock is empty
                         flag3=0
+                        #operation and flag state that the block that was supposed to be used..
+                        # will be used in the next step and is now stored on stock 5
                         box5=box
                         flag0=1
+                #if no more 1x3 blocks are available quit and continue on next row with box that was stored
                 elif flag1 is 0 and flag2 is 0 and flag3 is 0:
                     box5=box
                     if not ts. add_box (box5 , SideX , SideY , rotated ):
