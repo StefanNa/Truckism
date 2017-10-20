@@ -292,12 +292,14 @@ while not full :
                 print("SideY",SideY)
                 print("SideX",SideX)
 
+#########ENTER LAST FILLING FUNCTION HERE#############
 
 
 
 
-ts.get_free_in_row(SideY)
 
+
+######################################################
 
 print("SideY",SideY)
 print("SideX",SideX)
